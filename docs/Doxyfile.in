@@ -1,0 +1,25 @@
+# Doxyfile configuration template
+
+# Project related configuration options
+PROJECT_NAME           = "@PROJECT_NAME@"
+OUTPUT_DIRECTORY       = "@DOXYGEN_OUTPUT_DIR@"
+INPUT                  = "@DOXYGEN_INPUT_DIR@"
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+
+# Build related configuration options
+GENERATE_LATEX         = NO
+GENERATE_RTF           = NO
+GENERATE_MAN           = NO
+GENERATE_XML           = YES
+GENERATE_HTML          = YES
+
+# Other useful settings
+WARNINGS               = YES
+QUIET                  = NO
+
+# Specify file patterns to include (optional)
+FILE_PATTERNS          = *.cpp *.hpp *.h *.c *.cc
+
+# Exclude directories or files (optional)
+# EXCLUDE                = path/to/exclude

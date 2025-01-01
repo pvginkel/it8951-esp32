@@ -1,0 +1,13 @@
+# Configure the SPI host to use for the controller.
+
+CONFIG_IT8951_SPI_HOST=2
+CONFIG_IT8951_SPI_BUS_SPEED_DIVIDER=7
+
+# Set the pin numbers according to how the controller is connected to the device.
+
+CONFIG_IT8951_RESET_PIN=9
+CONFIG_IT8951_DISPLAY_READY_PIN=8
+CONFIG_IT8951_CS_PIN=10
+CONFIG_IT8951_MOSI_PIN=11
+CONFIG_IT8951_MISO_PIN=13
+CONFIG_IT8951_SCLK_PIN=12

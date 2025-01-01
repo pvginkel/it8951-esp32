@@ -5,6 +5,9 @@ It's used for a number of high performance e-Reader screens from Waveshare.
 
 The examples folders contain examples for how to use this driver.
 
+The Doxygen documentation for this project can be found at
+https://pvginkel.github.io/it8951-esp32/.
+
 ## Setup
 
 Setup is done using `sdkconfig` to select the SPI host and pins, and using

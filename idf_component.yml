@@ -1,0 +1,8 @@
+version: "1.9.5"
+description: ESP32 driver for the IT8951 controller
+url: https://github.com/pvginkel/it8951-esp32
+dependencies:
+  idf: ">=5.0"
+files:
+  exclude:
+    - ".github"

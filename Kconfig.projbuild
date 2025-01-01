@@ -1,0 +1,35 @@
+menu "IT8951 controller"
+
+    config IT8951_SPI_HOST
+        int "The SPI host the display is connected to"
+        default 0
+
+    config IT8951_SPI_BUS_SPEED_DIVIDER
+        int "The SPI bus speed divider"
+        default 7
+
+    config IT8951_RESET_PIN
+        int "Reset pin"
+        default -1
+
+    config IT8951_DISPLAY_READY_PIN
+        int "Display ready"
+        default -1
+
+    config IT8951_CS_PIN
+        int "CS pin"
+        default -1
+
+    config IT8951_MOSI_PIN
+        int "MOSI pin"
+        default -1
+
+    config IT8951_MISO_PIN
+        int "MISO pin"
+        default -1
+
+    config IT8951_SCLK_PIN
+        int "SCLK pin"
+        default -1
+            
+endmenu

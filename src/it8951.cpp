@@ -13,7 +13,7 @@ static const char* TAG = "IT8951";
 #define _WS_CONCAT3(x, y, z) x##y##z
 #define WS_CONCAT3(x, y, z) _WS_CONCAT3(x, y, z)
 
-#define SPI_HOST WS_CONCAT3(SPI, CONFIG_IT8951_SPI_HOST, _HOST)
+#define IT8951_SPI_HOST WS_CONCAT3(SPI, CONFIG_IT8951_SPI_HOST, _HOST)
 
 // INIT mode, for every init or some time after A2 mode refresh
 #define IT8951_MODE_INIT 0
@@ -174,7 +174,7 @@ void IT8951::spi_setup(int clock_speed_hz) {
             .quadhd_io_num = -1,
         };
 
-        ESP_ERROR_CHECK(spi_bus_initialize(SPI_HOST, &bus_config, SPI_DMA_CH_AUTO));
+        ESP_ERROR_CHECK(spi_bus_initialize(IT8951_SPI_HOST, &bus_config, SPI_DMA_CH_AUTO));
     } else {
         spi_bus_remove_device(_spi);
     }
@@ -185,7 +185,7 @@ void IT8951::spi_setup(int clock_speed_hz) {
         .queue_size = 1,
     };
 
-    ESP_ERROR_CHECK(spi_bus_add_device(SPI_HOST, &device_interface_config, &_spi));
+    ESP_ERROR_CHECK(spi_bus_add_device(IT8951_SPI_HOST, &device_interface_config, &_spi));
 
     int freq_khz;
     ESP_ERROR_CHECK(spi_device_get_actual_freq(_spi, &freq_khz));
@@ -197,7 +197,7 @@ void IT8951::spi_setup(int clock_speed_hz) {
     }
 
     size_t bus_max_transfer_sz;
-    ESP_ERROR_CHECK(spi_bus_get_max_transaction_len(SPI_HOST, &bus_max_transfer_sz));
+    ESP_ERROR_CHECK(spi_bus_get_max_transaction_len(IT8951_SPI_HOST, &bus_max_transfer_sz));
 
     _buffer_len = std::min(bus_max_transfer_sz, size_t(2048));
 

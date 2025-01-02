@@ -8,6 +8,23 @@ The examples folders contain examples for how to use this driver.
 The Doxygen documentation for this project can be found at
 https://pvginkel.github.io/it8951-esp32/.
 
+## Configuration
+
+The component contains a number of configuration parameters, all starting
+with IT8951.
+
+* `IT8951_SPI_HOST` determines the SPI host to use. Which one depends
+  on your chip (host 2 is available on the ESP32-S3) and whether you have PSIRAM
+  enabled.
+* `IT8951_SPI_BUS_SPEED_DIVIDER` determines the speed at which the SPI host
+  runs. The default is the maximum that works reliably on the ESP32-S3.
+  You can try to lower this to increase the speed, see if it works, or
+  increase the divider to lower the speed if you have issues.
+
+The remainder of the configuration parameters configure the pins the
+controller is connected to. Check the labels on the controller to the
+configuration parameters.
+
 ## Setup
 
 Setup is done using `sdkconfig` to select the SPI host and pins, and using

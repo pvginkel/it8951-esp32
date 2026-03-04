@@ -158,6 +158,11 @@ public:
     void display_area(IT8951Area& area, uint32_t target_memory_address, it8951_pixel_format_t pixel_format,
                       it8951_display_mode_t mode);
 
+    /**
+     * @brief Wait until the display is ready and the screen has been fully updated.
+     */
+    void wait_display_ready();
+
 private:
     void reset();
     void spi_setup(int clock_speed_hz);
@@ -185,7 +190,6 @@ private:
     uint16_t get_vcom();
     void set_vcom(uint16_t vcom);
     void set_target_memory_address(uint32_t target_memory_address);
-    void wait_display_ready();
     uint16_t get_mode_value(it8951_display_mode_t mode);
 
     size_t _buffer_len{0};

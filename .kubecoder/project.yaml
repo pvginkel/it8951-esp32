@@ -1,0 +1,33 @@
+projects:
+  root:
+    description: >-
+      IT8951 e-paper controller driver for the ESP32 — an ESP-IDF component
+      library. The gate compiles the two examples under examples/ for the
+      esp32 target, which is the only way to build the driver's sources.
+
+    # No setup statement. idf.py resolves and downloads the managed components
+    # on the first build (into each example's gitignored managed_components/),
+    # so a fresh clone is buildable with nothing run beforehand.
+
+    # One component rather than one per example: both are the same build unit
+    # to the reader (the library, compiled twice with different sdkconfig
+    # defaults) and share one toolchain, so splitting them would only add
+    # names. IDF_TARGET is pinned rather than left to idf.py's default so the
+    # gate cannot silently move off the target the GitHub Actions workflows
+    # build (.github/workflows/build_examples_*.yml, target: esp32).
+    build:
+      - cexec esp-idf idf.py -C examples/gc16 -DIDF_TARGET=esp32 build
+      - cexec esp-idf idf.py -C examples/monochrome -DIDF_TARGET=esp32 build
+
+    # test: unset — the repo has no test suite. Driving an IT8951 needs the
+    # physical SPI display, so there is nothing a pod can assert against; the
+    # examples building is the whole of CI here too.
+
+    # lint: unset — the repo configures no linter. src/.clang-format is a
+    # formatter config that nothing in the repo or in CI runs; wiring it would
+    # be this repo's first whole-tree format check, which is the operator's
+    # call, not onboarding's.
+
+    # docs/ builds the Doxygen site (docs/CMakeLists.txt, driven by the
+    # Windows-only docs/build.bat). It is unwired because no catalog toolchain
+    # ships Doxygen, and it is published from a workstation rather than CI.

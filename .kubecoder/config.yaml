@@ -11,9 +11,3 @@ tools:
   # entry carries the sidecar's memory limit and its own ccache home overlay,
   # so neither is restated here.
   - use: esp-idf
-
-# Nothing to do at pod start today — project.yaml declares no setup statements,
-# so this is a no-op that exits 0. It is wired anyway so that adding a setup
-# statement later needs no config change and no restart.
-setup:
-  - kc project setup

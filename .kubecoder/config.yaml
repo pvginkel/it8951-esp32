@@ -11,3 +11,5 @@ tools:
   # entry carries the sidecar's memory limit and its own ccache home overlay,
   # so neither is restated here.
   - use: esp-idf
+  # native: provides clang-format for the lint gate over src/.
+  - use: native

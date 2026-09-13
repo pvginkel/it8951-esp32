@@ -23,10 +23,11 @@ projects:
     # physical SPI display, so there is nothing a pod can assert against; the
     # examples building is the whole of CI here too.
 
-    # lint: unset — the repo configures no linter. src/.clang-format is a
-    # formatter config that nothing in the repo or in CI runs; wiring it would
-    # be this repo's first whole-tree format check, which is the operator's
-    # call, not onboarding's.
+    # The format gate checks the driver's own sources under src/ against
+    # src/.clang-format, using clang-format from the native toolchain. The
+    # examples under examples/ are outside it.
+    lint:
+      - cexec native sh -c 'find src \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) -print0 | xargs -0 clang-format --dry-run --Werror'
 
     # docs/ builds the Doxygen site (docs/CMakeLists.txt, driven by the
     # Windows-only docs/build.bat). It is unwired because no catalog toolchain
